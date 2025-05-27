@@ -4,34 +4,34 @@ const generateButton = document.querySelector(".generate-button");
 
 generateButton.addEventListener("click", () => {
   password.innerText = "";
-  const chekedUppercase = document.getElementById("uppercase-chekbox").checked;
-  const chekedLowercase = document.getElementById("lowercase-chekbox").checked;
-  const chekedNumbers = document.getElementById("numbers-chekbox").checked;
-  const chekedSymbols = document.getElementById("symbols-chekbox").checked;
+  const checkedUppercase = document.getElementById("uppercase-chekbox").checked;
+  const checkedLowercase = document.getElementById("lowercase-chekbox").checked;
+  const checkedNumbers = document.getElementById("numbers-chekbox").checked;
+  const checkedSymbols = document.getElementById("symbols-chekbox").checked;
 
   const length = range.value;
-  let cheked = "";
+  let checked = "";
 
   const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const lowercase = "abcdefghijklmnopqrstuvwxyz";
   const numbers = "0123456789";
   const symbols = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~";
-  let indexNum = 0;
-  if (chekedUppercase) {
-    cheked += uppercase;
+  if (checkedUppercase) {
+    checked += uppercase;
   }
-  if (chekedLowercase) {
-    cheked += lowercase;
+  if (checkedLowercase) {
+    checked += lowercase;
   }
-  if (chekedNumbers) {
-    cheked += numbers;
+  if (checkedNumbers) {
+    checked += numbers;
   }
-  if (chekedSymbols) {
-    cheked += symbols;
+  if (checkedSymbols) {
+    checked += symbols;
   }
-
-  for (let i = 0; i < length; i++) {
-    let indexNum = Math.floor(Math.random() * cheked.length);
-    password.innerText += cheked[indexNum];
+  if (checked.length > 0) {
+    for (let i = 0; i < length; i++) {
+      let indexNum = Math.floor(Math.random() * checked.length);
+      password.innerText += checked[indexNum];
+    }
   }
 });
