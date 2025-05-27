@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="script.js" defer></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <h1>Password Generator</h1>
+      <div class="ganerated-password-div">
+        <p class="ganerated-password"></p>
+        <button class="button-for-copy"></button>
+      </div>
+      <div class="div-for-range-length">
+        <h2 class="range-title">Character Length</h2>
+        <p class="range-number"></p>
+      </div>
+      <div class="input-container">
+        <input type="range" class="range" id="range" min="0" max="20" />
+        <div class="chek-box-div">
+          <input type="checkbox" id="uppercase-chekbox" />
+          <label for="uppercase-chekbox">Include Uppercase Letters</label>
+        </div>
+        <div class="chek-box-div">
+          <input type="checkbox" id="lowercase-chekbox" />
+          <label for="lowercase-chekbox">Include Lowercase Letters</label>
+        </div>
+        <div class="chek-box-div">
+          <input type="checkbox" id="numbers-chekbox" />
+          <label for="numbers-chekbox">Include Numbers</label>
+        </div>
+        <div class="chek-box-div">
+          <input type="checkbox" id="symbols-chekbox" />
+          <label for="symbols-chekbox">Include Symbols</label>
+        </div>
+      </div>
+      <button class="generate-button">GENERATE</button>
+    </main>
+  </body>
+</html>
