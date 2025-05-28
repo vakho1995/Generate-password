@@ -16,7 +16,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
   font-family: "JetBrains Mono";
   font-weight: 700;
 }
@@ -25,10 +24,11 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1rem;
 }
 h1 {
   color: #817d92;
-  font-size: 1rem;
+  font-size: 1.6rem;
 }
 .ganerated-password-div {
   background-color: #24232c;
@@ -39,6 +39,129 @@ h1 {
 }
 .ganerated-password {
   color: #e6e5ea;
-  font-size: 2.4rem;
+  font-size: 2rem;
   /* letter-spacing: 0.1rem; */
+}
+.input-container {
+  background-color: #24232c;
+  padding: 1.6rem;
+  width: 100%;
+}
+.range-title-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.range-title {
+  color: #e6e5ea;
+  font-size: 1.6rem;
+}
+.range-number {
+  color: #a4ffaf;
+  font-size: 2.4rem;
+}
+.range {
+  -webkit-appearance: none;
+  width: 100%;
+  border-radius: 5rem;
+  height: 0.8rem;
+  background: linear-gradient(to right, #a4ffaf 50%, #18171f 50%);
+  margin: 1.8rem 0 3.2rem;
+}
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: #e6e5ea;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.7rem;
+}
+
+/* Checkbox-ის სტილები */
+.checkbox-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+  cursor: pointer;
+  color: #e6e5ea;
+  font-size: 1.6rem;
+}
+.checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  width: 2rem;
+  height: 2rem;
+  border: 0.2rem solid #e6e5ea;
+  cursor: pointer;
+  position: relative;
+  cursor: pointer;
+}
+.checkbox:checked {
+  background-color: #a4ffaf;
+  border-color: #a4ffaf;
+}
+.checkbox:checked::after {
+  content: "";
+  position: absolute;
+  top: 0.05rem;
+  left: 0.4rem;
+  width: 0.5rem;
+  height: 1rem;
+  border: solid #18171f;
+  border-width: 0 0.4rem 0.4rem 0;
+  transform: rotate(45deg);
+}
+/*  */
+.strength-info-container {
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #18171f;
+  padding: 1.4rem;
+}
+.strangth-info-text {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.strength-title {
+  color: #817d92;
+  font-size: 1.6rem;
+}
+.about-strength {
+  color: #e6e5ea;
+  font-size: 1.8rem;
+}
+.strength-meter-div {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+.strength-meter {
+  width: 1rem;
+  height: 2.8rem;
+  border: 0.2rem solid #e6e5ea;
+}
+.generate-button {
+  padding: 1.8rem 10.3rem;
+  background-color: #a4ffaf;
+  color: #24232c;
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+.generate-button span {
+  margin-left: 1.6rem;
 }

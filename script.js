@@ -2,6 +2,19 @@ const range = document.querySelector(".range");
 let password = document.querySelector(".ganerated-password");
 const generateButton = document.querySelector(".generate-button");
 
+function rangeBackground(value) {
+  const min = range.min;
+  const max = range.max;
+  const percentage = (value / max) * 100;
+  console.log(percentage);
+  range.style.background = `linear-gradient(to right, #a4ffaf ${percentage}%, #18171f ${percentage}%)`;
+}
+
+range.addEventListener("input", (e) => {
+  rangeBackground(e.target.value);
+  document.querySelector(".range-number").textContent = e.target.value;
+});
+
 generateButton.addEventListener("click", () => {
   password.innerText = "";
   const checkedUppercase = document.getElementById("uppercase-chekbox").checked;

@@ -12,32 +12,58 @@
       <h1>Password Generator</h1>
       <div class="ganerated-password-div">
         <p class="ganerated-password"></p>
-        <button class="button-for-copy"></button>
-      </div>
-      <div class="div-for-range-length">
-        <h2 class="range-title">Character Length</h2>
-        <input type="range" class="range" id="range" min="0" max="20" />
-        <p class="range-number"></p>
+        <img
+          src="./images/fa-regular_copy.svg"
+          alt="image"
+          class="copy-image"
+        />
       </div>
       <div class="input-container">
-        <div class="chek-box-div">
-          <input type="checkbox" id="uppercase-chekbox" />
-          <label for="uppercase-chekbox">Include Uppercase Letters</label>
+        <div class="div-for-range-length">
+          <div class="range-title-div">
+            <p class="range-title">Character Length</p>
+            <p class="range-number">10</p>
+          </div>
+          <input type="range" class="range" id="range" min="0" max="20" />
         </div>
-        <div class="chek-box-div">
-          <input type="checkbox" id="lowercase-chekbox" />
-          <label for="lowercase-chekbox">Include Lowercase Letters</label>
+        <div class="checkbox-container">
+          <label for="uppercase-chekbox" class="checkbox-label">
+            <input type="checkbox" id="uppercase-chekbox" class="checkbox" />
+            Include Uppercase Letters
+          </label>
+
+          <label for="lowercase-chekbox" class="checkbox-label">
+            <input type="checkbox" id="lowercase-chekbox" class="checkbox" />
+            Include Lowercase Letters
+          </label>
+
+          <label for="numbers-chekbox" class="checkbox-label">
+            <input type="checkbox" id="numbers-chekbox" class="checkbox" />
+            Include Numbers
+          </label>
+
+          <label for="symbols-chekbox" class="checkbox-label">
+            <input type="checkbox" id="symbols-chekbox" class="checkbox" />
+            Include Symbols
+          </label>
         </div>
-        <div class="chek-box-div">
-          <input type="checkbox" id="numbers-chekbox" />
-          <label for="numbers-chekbox">Include Numbers</label>
+        <div class="strength-info-container">
+          <div class="strangth-info-text">
+            <p class="strength-title">STRENGTH</p>
+            <p class="about-strength">MEDIUM</p>
+          </div>
+          <div class="strength-meter-div">
+            <div class="strength-meter"></div>
+            <div class="strength-meter"></div>
+            <div class="strength-meter"></div>
+            <div class="strength-meter"></div>
+          </div>
         </div>
-        <div class="chek-box-div">
-          <input type="checkbox" id="symbols-chekbox" />
-          <label for="symbols-chekbox">Include Symbols</label>
-        </div>
+        <button class="generate-button">
+          GENERATE
+          <span><img src="./images/bx_arrow-to-left.svg" alt="" /></span>
+        </button>
       </div>
-      <button class="generate-button">GENERATE</button>
     </main>
   </body>
 </html>
