@@ -1,6 +1,9 @@
 const range = document.querySelector(".range");
 let password = document.querySelector(".ganerated-password");
 const generateButton = document.querySelector(".generate-button");
+const checkboxArr = [...document.querySelectorAll(".checkbox")];
+const strengthMeterArr = [...document.querySelectorAll(".strength-meter")];
+const copyBtn = document.querySelector(".copy-image");
 
 function rangeBackground(value) {
   const min = range.min;
@@ -47,4 +50,54 @@ generateButton.addEventListener("click", () => {
       password.innerText += checked[indexNum];
     }
   }
+});
+
+function updateStrengthMeter() {
+  let activeStrengthMeter = checkboxArr.filter((checkbox) => {
+    return checkbox.checked;
+  }).length;
+
+  strengthMeterArr.forEach((strengthMeter, index) => {
+    if (index < activeStrengthMeter) {
+      strengthMeter.classList.add("strength-active");
+    } else {
+      strengthMeter.classList.remove("strength-active");
+    }
+  });
+  level();
+}
+
+checkboxArr.forEach((checkbox) => {
+  checkbox.addEventListener("change", updateStrengthMeter);
+});
+
+updateStrengthMeter();
+
+function level() {
+  let num = strengthMeterArr.filter((strengthMeter) =>
+    strengthMeter.classList.contains("strength-active")
+  ).length;
+
+  switch (num) {
+    case 1:
+      document.querySelector(".about-strength").textContent = "SIMPLE";
+      break;
+    case 2:
+      document.querySelector(".about-strength").textContent = "MEDIUM";
+      break;
+    case 3:
+      document.querySelector(".about-strength").textContent = "HARD";
+      break;
+    case 4:
+      document.querySelector(".about-strength").textContent = "VERY HARD";
+      break;
+
+    default:
+      document.querySelector(".about-strength").textContent = "";
+  }
+}
+
+copyBtn.addEventListener("click", () => {
+  const text = password.textContent;
+  navigator.clipboard.writeText(text);
 });
