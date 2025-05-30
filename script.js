@@ -96,10 +96,30 @@ checkboxArr.forEach((checkbox) => {
 });
 updateStrengthMeter();
 
-// This logic is for copying the password.
+/// the logic for copy the generated password and text notification about
 copyBtn.addEventListener("click", () => {
   if (password.textContent !== "P4$5W0rD!") {
-    const text = password.textContent;
-    navigator.clipboard.writeText(text);
+    let clearMessage;
+    navigator.clipboard
+      .writeText(password.textContent)
+      .then(() => {
+        if (window.screen.width >= 1024) {
+          document.querySelector(".copied").textContent = "COPIED";
+          clearTimeout(clearMessage);
+          clearMessage = setTimeout(() => {
+            document.querySelector(".copied").textContent = "";
+          }, 1500);
+        }
+      })
+      .catch(() => {
+        if (window.screen.width >= 1024) {
+          document.querySelector(".copied").textContent = "FAILED";
+          document.querySelector(".copied").style.color = "red";
+          clearTimeout(clearMessage);
+          setTimeout(() => {
+            clearMessage = document.querySelector(".copied").textContent = "";
+          }, 1500);
+        }
+      });
   }
 });

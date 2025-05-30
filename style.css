@@ -44,6 +44,15 @@ h1 {
   opacity: 0.25;
   /* letter-spacing: 0.1rem; */
 }
+.copy-btn-div {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+.copied {
+  color: #a4ffaf;
+  font-size: 1.8rem;
+}
 .copy-svg path {
   transition: 0.3s;
   cursor: pointer;
