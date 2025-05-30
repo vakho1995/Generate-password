@@ -21,6 +21,7 @@ body {
 }
 main {
   width: 100%;
+  max-width: 54rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,7 +41,12 @@ h1 {
 .ganerated-password {
   color: #e6e5ea;
   font-size: 2rem;
+  opacity: 0.25;
   /* letter-spacing: 0.1rem; */
+}
+.copy-svg path {
+  transition: 0.3s;
+  cursor: pointer;
 }
 .input-container {
   background-color: #24232c;
@@ -61,6 +67,8 @@ h1 {
   font-size: 2.4rem;
 }
 .range {
+  appearance: none;
+  -moz-appearance: none;
   -webkit-appearance: none;
   width: 100%;
   border-radius: 5rem;
@@ -75,6 +83,7 @@ h1 {
   height: 2.8rem;
   border-radius: 50%;
   cursor: pointer;
+  transition: 0.3s;
 }
 .input-container {
   display: flex;
@@ -100,13 +109,12 @@ h1 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-
   width: 2rem;
   height: 2rem;
   border: 0.2rem solid #e6e5ea;
-  cursor: pointer;
   position: relative;
   cursor: pointer;
+  transition: 0.3s;
 }
 .checkbox:checked {
   background-color: #a4ffaf;
@@ -155,11 +163,21 @@ h1 {
   height: 2.8rem;
   border: 0.2rem solid #e6e5ea;
 }
-.strength-active {
-  width: 1rem;
-  height: 2.8rem;
+.to-weak-active {
+  border: 0.2rem solid #f64a4a;
+  background-color: #f64a4a;
+}
+.weak-active {
+  border: 0.2rem solid #fb7c58;
+  background-color: #fb7c58;
+}
+.medium-active {
   border: 0.2rem solid #f8cd65;
   background-color: #f8cd65;
+}
+.strong-active {
+  border: 0.2rem solid #a4ffaf;
+  background-color: #a4ffaf;
 }
 .generate-button {
   padding: 1.8rem 10.3rem;
@@ -167,7 +185,58 @@ h1 {
   color: #24232c;
   font-weight: 700;
   font-size: 1.6rem;
+  cursor: pointer;
+  transition: 0.3s;
 }
-.generate-button span {
+.arrow-to-right {
   margin-left: 1.6rem;
+}
+
+/* add media queries */
+@media (min-width: 768px) {
+  h1 {
+    font-size: 2.4rem;
+  }
+  .ganerated-password {
+    font-size: 3rem;
+  }
+  .range-title {
+    font-size: 1.8rem;
+  }
+  .range-number {
+    font-size: 3rem;
+  }
+  .checkbox-label {
+    font-size: 1.8rem;
+  }
+  .strength-title {
+    font-size: 1.8rem;
+  }
+  .about-strength {
+    font-size: 2.4rem;
+  }
+  .generate-button {
+    font-size: 1.8rem;
+  }
+}
+/* ////////////////////////// */
+@media (min-width: 1440px) {
+  .copy-svg:hover path {
+    fill: white;
+  }
+  .range::-webkit-slider-thumb:hover {
+    background: #18171f;
+    border: solid #a4ffaf;
+  }
+  .checkbox:hover {
+    border: 0.2rem solid #a4ffaf;
+  }
+  .generate-button:hover {
+    border: solid #a4ffaf;
+    background-color: #24232c;
+    color: #a4ffaf;
+  }
+  .generate-button:hover .arrow-to-right path {
+    fill: #a4ffaf;
+  }
 }

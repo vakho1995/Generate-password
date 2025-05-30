@@ -3,21 +3,9 @@ let password = document.querySelector(".ganerated-password");
 const generateButton = document.querySelector(".generate-button");
 const checkboxArr = [...document.querySelectorAll(".checkbox")];
 const strengthMeterArr = [...document.querySelectorAll(".strength-meter")];
-const copyBtn = document.querySelector(".copy-image");
+const copyBtn = document.querySelector(".copy-svg");
 
-function rangeBackground(value) {
-  const min = range.min;
-  const max = range.max;
-  const percentage = (value / max) * 100;
-  console.log(percentage);
-  range.style.background = `linear-gradient(to right, #a4ffaf ${percentage}%, #18171f ${percentage}%)`;
-}
-
-range.addEventListener("input", (e) => {
-  rangeBackground(e.target.value);
-  document.querySelector(".range-number").textContent = e.target.value;
-});
-
+// The logic for generating the password.
 generateButton.addEventListener("click", () => {
   password.innerText = "";
   const checkedUppercase = document.getElementById("uppercase-chekbox").checked;
@@ -50,54 +38,68 @@ generateButton.addEventListener("click", () => {
       password.innerText += checked[indexNum];
     }
   }
+  password.style.opacity = "1";
 });
 
+///  The logic for the background of the <input type="range"/>.
+function rangeBackground(value) {
+  const max = range.max;
+  const percentage = (value / max) * 100;
+  range.style.background = `linear-gradient(to right, #a4ffaf ${percentage}%, #18171f ${percentage}%)`;
+}
+
+range.addEventListener("input", (e) => {
+  rangeBackground(e.target.value);
+  document.querySelector(".range-number").textContent = e.target.value;
+});
+
+// This logic is used to evaluate how strong the password is
+const strengthClassObj = {
+  //
+  1: "to-weak-active",
+  2: "weak-active",
+  3: "medium-active",
+  4: "strong-active",
+};
+const strengthObj = {
+  1: "TO WEAK",
+  2: "WEAK",
+  3: "MEDIUM",
+  4: "STRONG",
+};
+
 function updateStrengthMeter() {
-  let activeStrengthMeter = checkboxArr.filter((checkbox) => {
+  let num = checkboxArr.filter((checkbox) => {
     return checkbox.checked;
   }).length;
 
+  if (num === 0) {
+    document.querySelector(".about-strength").textContent = "";
+  }
+
   strengthMeterArr.forEach((strengthMeter, index) => {
-    if (index < activeStrengthMeter) {
-      strengthMeter.classList.add("strength-active");
-    } else {
-      strengthMeter.classList.remove("strength-active");
+    strengthMeter.classList.remove(
+      strengthClassObj[1],
+      strengthClassObj[2],
+      strengthClassObj[3],
+      strengthClassObj[4]
+    );
+
+    if (index < num) {
+      strengthMeter.classList.add(strengthClassObj[num]);
+      document.querySelector(".about-strength").textContent = strengthObj[num];
     }
   });
-  level();
 }
-
 checkboxArr.forEach((checkbox) => {
   checkbox.addEventListener("change", updateStrengthMeter);
 });
-
 updateStrengthMeter();
 
-function level() {
-  let num = strengthMeterArr.filter((strengthMeter) =>
-    strengthMeter.classList.contains("strength-active")
-  ).length;
-
-  switch (num) {
-    case 1:
-      document.querySelector(".about-strength").textContent = "SIMPLE";
-      break;
-    case 2:
-      document.querySelector(".about-strength").textContent = "MEDIUM";
-      break;
-    case 3:
-      document.querySelector(".about-strength").textContent = "HARD";
-      break;
-    case 4:
-      document.querySelector(".about-strength").textContent = "VERY HARD";
-      break;
-
-    default:
-      document.querySelector(".about-strength").textContent = "";
-  }
-}
-
+// This logic is for copying the password.
 copyBtn.addEventListener("click", () => {
-  const text = password.textContent;
-  navigator.clipboard.writeText(text);
+  if (password.textContent !== "P4$5W0rD!") {
+    const text = password.textContent;
+    navigator.clipboard.writeText(text);
+  }
 });
